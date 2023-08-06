@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+int minJumps(int a[], int n){
+       if(n==1) return 0;
+       if(a[0]==0) return -1;
+       int rng=a[0];
+       int sl=a[0];
+       int jp=1;
+       for(int i=1;i<n;i++){
+           if(i==n-1)
+            return jp;
+            rng=max(rng,i+a[i]);
+            sl--;
+            if(sl==0){
+                jp++;
+                if(rng<=i)
+                return -1;
+                sl=rng-i;
+            }
+       }
+       return -1;
+    }
+int main() {
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int result=minJumps(arr,  n);
+    cout<<result<<" ";
+    return 0;
+}
