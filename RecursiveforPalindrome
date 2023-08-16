@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+#include <iostream>
+using namespace std;
+bool ispanlindrome(string name ,int left, int right){
+    if(left==right)
+      return true;
+    if(name[left]!=name[right])
+     return false;
+    if(left< right+1)
+    ispanlindrome(name,left+1,right-1);
+    return true;
+}
+int main() {
+    string name="madam";
+    int left=0;
+    int right=name.length()-1;
+    if(ispanlindrome(name,left,right)){
+        cout<<"YES";
+    }else{
+        cout<<"No";
+    }
+    return 0;
+}
