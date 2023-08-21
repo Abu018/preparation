@@ -1,0 +1,20 @@
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+      for(auto value:nums2){
+          nums1.push_back(value);
+      }  
+      sort(nums1.begin(),nums1.end());
+      int start=0;
+      int end=nums1.size()-1;
+      int size=nums1.size();
+      if(size%2==0){
+      double mid=(start+end)/2;
+      double sum=nums1[mid]+nums1[mid+1];
+      sum=sum/2;
+      return sum;
+      }
+      double mid=(start+end)/2;
+      return nums1[mid];
+    }
+};
