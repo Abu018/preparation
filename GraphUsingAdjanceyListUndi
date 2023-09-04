@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Graph{
+    list<int>*l;
+    int V;
+    public:
+    Graph(int v){
+        V=v;
+        l=new list<int>[V];
+    }
+    void add(int i,int j,bool undi=true){
+        l[i].push_back(j);
+        if(undi==true){
+            l[j].push_back(i);
+        }
+    }
+void printall(){
+    for(int i=0;i<V;i++){
+    cout<<i<<"-->";
+    for(auto val:l[i]){
+        cout<<val<<",";
+    }
+    cout<<endl;
+    }
+}
+};
+int main() {
+    Graph g(6);
+    g.add(0,1);
+    g.add(0,4);
+    g.add(2,1);
+    g.add(3,4);
+    g.add(4,5);
+    g.add(2,3);
+    g.add(3,5);
+    g.printall();
+    return 0;
+}
