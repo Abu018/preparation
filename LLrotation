@@ -1,0 +1,38 @@
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if (!head || k == 0) {
+        return head;
+    }
+
+    vector<int> ans;
+    ListNode* temp = head;
+    
+    // Step 1: Create a vector to store the values of the linked list.
+    while (temp) {
+        ans.push_back(temp->val);
+        temp = temp->next;
+    }
+    
+    int n = ans.size();
+    
+    // Step 2: Calculate the effective rotation count. 
+    k = k % n;
+    
+    if (k == 0) {
+        return head; // No rotation needed
+    }
+    
+    // Step 3: Rotate the values in the vector.
+    rotate(ans.rbegin(), ans.rbegin() + k, ans.rend());
+    
+    // Step 4: Update the linked list with the rotated values.
+    temp = head;
+    int i = 0;
+    while (temp) {
+        temp->val = ans[i];
+        temp = temp->next;
+        i++;
+    }
+
+    return head;
+    }
